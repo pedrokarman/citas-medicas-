@@ -1,0 +1,19 @@
+
+#logincontainer{
+    background: url(http://localhost/planburger/public/common/img/banner_web.png) no-repeat center bottom;
+    margin-top: -70px;
+    padding-top: 250px;
+    background-attachment: relative;
+    background-position: center center;
+    min-height: 750px;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}

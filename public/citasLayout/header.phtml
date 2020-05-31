@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel='icon' href='<?php echo COMMON; ?>img/icono.ico'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title><?php echo $this->title; ?></title>
+        <script src="<?php echo COMMON; ?>js/jquery.js"></script>
+        <link href="<?php echo COMMON; ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo COMMON; ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo COMMON; ?>vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+        <link href="<?php echo COMMON; ?>css/sb-admin.css" rel="stylesheet">
+        <link href="<?php echo COMMON; ?>css/pnotify.custom.min.css" rel="stylesheet">
+         <link href='<?php echo COMMON; ?>formvalidation/dist/css/bootstrapValidator.css' rel='stylesheet'><script src='<?php echo COMMON; ?>formvalidation/dist/js/bootstrapValidator.js'></script><script src='<?php echo COMMON; ?>formvalidation/dist/js/language/es_CL.js'></script>
+    </head>
+    <style>
+        .loader {
+            opacity: 0.3;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden !important;
+            z-index: 99999;
+        }
+
+        .loader-img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
+        }
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+    <body class="fixed-nav sticky-footer bg-dark" id="page-top">
+        <?php if (Session::get('autenticado')) { ?>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+                <a class="navbar-brand" href="<?php echo RUTA_URL; ?>"><?php echo NAME_APP; ?></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                        <?php for ($i = 0; $i < count($_layoutParams['menu']); $i++) { ?>
+                            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="<?php echo $_layoutParams['menu'][$i]['titulo']; ?>">
+                                <a class="nav-link" href="<?php echo $_layoutParams['menu'][$i]['enlace']; ?>">
+                                    <i class="<?php echo $_layoutParams['menu'][$i]['icono']; ?>"></i>
+                                    <span class="nav-link-text"><?php echo $_layoutParams['menu'][$i]['titulo']; ?></span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <ul class="navbar-nav sidenav-toggler">
+                        <li class="nav-item">
+                            <a class="nav-link text-center" id="sidenavToggler">
+                                <i class="fa fa-fw fa-angle-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="<?php echo RUTA_URL . 'inicio/cerrarsesion'; ?>" class="nav-link">
+                                <i class="fa fa-fw fa-sign-out"></i>Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="loader">
+                <div class="loader-img"></div>
+            </div>
+            <div class="content-wrapper">
+                <div class="container-fluid">
+                    <!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#"><?php echo $this->modulo; ?></a>
+                        </li>
+                        <li class="breadcrumb-item active"><?php echo $this->metodo; ?></li>
+                    </ol>
+                <?php } ?>
+                <?php
+                if (Session::get('mensaje') != '') {
+                    ?> <div id="mensaje" class="row"> <div class="col-md-4"></div>
+                        <div class="col-md-4 alert <?php echo Session::get('tipomensaje'); ?> alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong><?php echo Session::get('mensaje'); ?></strong></div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <?php
+                    Session::set('mensaje', '');
+                    Session::set('tipomensaje', '');
+                }
+                ?>
