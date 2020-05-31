@@ -1,0 +1,82 @@
+<?php if ($this->datos['response'] == 'Success') { ?>
+    <script src='<?php echo COMMON; ?>js/validar.js'></script>
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">Datos personales</div>
+        <div class="card-body">
+            <form id="form1" method="post" action="<?php echo RUTA_URL . 'usuario/setinformacion'; ?>">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-8">
+                            <label for="exampleInputName">Nombre</label>
+                            <input value="<?php echo $this->datos['datos'][0]['uiosNombres']; ?>" name="txtNombre" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese nombre">
+                        </div>
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputEmail1">Documento</label>
+                            <input value="<?php echo $this->datos['datos'][0]['uiosDocumento']; ?>" name="txtDocumento" class="form-control" id="exampleInputDocu" type="text" aria-describedby="AdressHelp" placeholder="Ingrese documento">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputEmail1">Telefono</label>
+                            <input value="<?php echo $this->datos['datos'][0]['uiosTelefono']; ?>" name="txtTelefono" class="form-control" id="exampleInputTelefono" type="number" aria-describedby="AdressHelp" placeholder="Ingrese telefono">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputPassword1">Correo electronico</label>
+                            <input value="<?php echo $this->datos['datos'][0]['uiosEmailFK']; ?>" name="txtCorreo" class="form-control" id="exampleInputEmail" type="email" placeholder="ingrese correo">
+                        </div>
+                        <div class="col-md-6">
+                            <label  for="exampleConfirmPassword">Fecha de nacimiento</label>
+                            <input value="<?php echo $this->datos['datos'][0]['uiosFechaEspecial']; ?>" name="txtFecha" class="form-control" id="exampleInputFecha" type="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputPassword1">Contraseña</label>
+                            <input name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="contraseña">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleConfirmPassword">Confirme contraseña</label>
+                            <input name="confirmPassword" class="form-control" id="exampleInputPassword2" type="password" placeholder="confirme contraseña">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                        </div>
+                        <div class="col-md-6">
+                            <a href="<?php echo RUTA_URL . 'usuario/newcita'; ?>" class="btn btn-danger btn-block">Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+<?php } else { ?>
+    <div style="margin-top: 15px;" class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="text-center panel-danger">
+                <fieldset class="well">
+                    <legend class="h6"><span class="btn btn-xs btn-danger" title="Imformación Importante" class="hoverToolTip">!!!!!!!Atención!!!!!!!!</span></legend>
+                    <h3 class="">Error verifique que su contraseña este bien escrita..</h3>
+
+                </fieldset>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+<?php } ?>
+
