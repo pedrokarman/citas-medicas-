@@ -20,11 +20,7 @@ class medicosController extends Controller {
         $this->redireccionar('medicos/citasasignadas');
     }
 
-    public function verhistoriaclinica() {
-        $data = $this->loadModel('medicos');
-        $this->_view->datos = $data->historiaclinica();
-        $this->_view->renderizar('historiaclinica', 'blank');
-    }
+    
 
     public function ingresardatospaciente() {
         $data = $this->loadModel('medicos');
