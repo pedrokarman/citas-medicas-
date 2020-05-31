@@ -1,0 +1,242 @@
+<?php
+date_default_timezone_set('America/Bogota');
+?>
+<?php if (count($this->datos) > 0) { ?>
+    <a href="<?php echo RUTA_URL . 'medicos/citasasignadas'; ?>" class="btn btn-danger" style="margin-bottom: 15px;">Volver</a>
+    <?php for ($i = 0; $i < count($this->datos); $i++) { ?>
+        <div class="card mb-3">
+            <div class="card-header">
+                Informacion cita <?php echo $this->datos[$i]['fecha'] . ' : ' . $this->datos[$i]['hora']; ?>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label class="form-control">
+                                Paciente: <?php echo ucwords(strtolower($this->datos[$i]['usuario'])); ?>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-control">
+                                Fecha: <?php echo $this->datos[$i]['fecha'] . ' : ' . $this->datos[$i]['hora']; ?>
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-control">
+                                Profesional: <?php echo ucwords(strtolower($this->datos[$i]['medico'])); ?>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <table class="table table-responsive table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Presion arterial</th>
+                                    <th>Pulsaciones</th>
+                                    <th>Ritmo respiratorio</th>
+                                    <th>Temperatura</th>
+                                    <th>Altura</th>
+                                    <th>Peso</th>
+                                    <th>IMC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['sist']; ?>" name="txtSist" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>sist.</td>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['diast']; ?>" name="txtDiast" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>diast.</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['pulsaciones']; ?>" name="txtPpm" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>ppm</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['ritmorespi']; ?>" name="txtRpm" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>rpm</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['temperatura']; ?>" name="txtGrados" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>ºgrados</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['altura']; ?>" name="txtCms" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>cms</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['peso']; ?>" name="txtKgrs" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>kgrs</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input disabled value="<?php echo $this->datos[$i]['imc']; ?>" style="width: 70px;" type="number" class="form-control"></td>
+                                                <td>kg/m^2</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card card-register" style="margin-bottom: 10px;">
+                    <div class="card-header">Clasificación de la Organización mundial de la salud</div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ÍNDICE MASA CORPORAL</th>
+                                    <th>CLASIFICACIÓN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($this->datos[$i]['imc'] < 16) { ?>
+                                    <tr class="table-danger">
+                                        <td><16.00</td>
+                                        <td>Infrapeso: Delgadez Severa</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td><16.00</td>
+                                        <td>Infrapeso: Delgadez Severa</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 16 && $this->datos[$i]['imc'] < 17) { ?>
+                                    <tr class="table-danger">
+                                        <td>16.00 - 16.99</td>
+                                        <td>Infrapeso: Delgadez moderada</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>16.00 - 16.99</td>
+                                        <td>Infrapeso: Delgadez moderada</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 17 && $this->datos[$i]['imc'] < 18.50) { ?>
+                                    <tr class="table-danger">
+                                        <td>17.00 - 18.49</td>
+                                        <td>Infrapeso: Delgadez aceptable</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>17.00 - 18.49</td>
+                                        <td>Infrapeso: Delgadez aceptable</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 18.50 && $this->datos[$i]['imc'] < 25) { ?>
+                                    <tr class="table-danger">
+                                        <td>18.50 - 24.99</td>
+                                        <td>Peso Normal</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>18.50 - 24.99</td>
+                                        <td>Peso Normal</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 25 && $this->datos[$i]['imc'] < 30) { ?>
+                                    <tr class="table-danger">
+                                        <td>25.00 - 29.99</td>
+                                        <td>Sobrepeso</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>25.00 - 29.99</td>
+                                        <td>Sobrepeso</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 30 && $this->datos[$i]['imc'] < 35) { ?>
+                                    <tr class="table-danger">
+                                        <td>30.00 - 34.99</td>
+                                        <td>Obeso: Tipo I</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>30.00 - 34.99</td>
+                                        <td>Obeso: Tipo I</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] >= 35 && $this->datos[$i]['imc'] <= 40) { ?>
+                                    <tr class="table-danger">
+                                        <td>35.00 - 40.00</td>
+                                        <td>Obeso: Tipo II</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>35.00 - 40.00</td>
+                                        <td>Obeso: Tipo II</td>
+                                    </tr>
+                                <?php } ?>
+                                <?php if ($this->datos[$i]['imc'] > 40) { ?>
+                                    <tr class="table-danger">
+                                        <td>>40.00</td>
+                                        <td>Obeso: Tipo III</td>
+                                    </tr>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td>>40.00</td>
+                                        <td>Obeso: Tipo III</td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Exploracion(Revision paciente)
+                    </label>
+                    <textarea disabled name="txtExploracion" class="form-control" placeholder="Ingrese exploracion paciente"><?php echo $this->datos[$i]['exploracion']; ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Diagnostico
+                    </label>
+                    <textarea disabled name="txtDiagnostico" class="form-control" placeholder="Ingrese diagnostico paciente"><?php echo $this->datos[$i]['diagnostico']; ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>
+                        Tratamiento
+                    </label>
+                    <textarea disabled name="txtTratamiento" class="form-control" placeholder="Ingrese tratamiento paciente"><?php echo $this->datos[$i]['tratamiento']; ?></textarea>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+<?php } else { ?>
+    <div class="text-center">
+        <h3>Este usuario no tiene historia clinica</h3>
+        <br/>
+        <a href="<?php echo RUTA_URL . 'medicos/citasasignadas'; ?>" class="btn btn-danger" style="margin-bottom: 15px;">Volver</a>
+    </div>
+<?php } ?>
+
+
