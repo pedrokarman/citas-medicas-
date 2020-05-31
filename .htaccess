@@ -1,0 +1,6 @@
+SetEnv HTTP_MOD_REWRITE On
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_URI} !\.(css|gif|ico|jpg|js|png|swf|txt)$
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
