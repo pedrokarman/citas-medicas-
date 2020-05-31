@@ -1,1 +1,142 @@
 
+?php
+date_default_timezone_set('America/Bogota');
+?>
+<div class="card mb-3">
+    <div class="card-header">
+        Datos cita
+    </div>
+    <div class="card-body">
+        <form method="post" action="<?php echo RUTA_URL . 'medicos/setdatoscita'; ?>">
+            <input type="hidden" name="txtCodigo" value="<?php echo $this->codigo; ?>">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <label class="form-control">
+                            Paciente: <?php echo ucwords(strtolower($this->datos[0]['uiosNombres'])); ?>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-control" id="exampleInputHoraA">
+                            Fecha: <?php echo date('Y-m-d'); ?> : <?php echo date('H:i:s'); ?>
+                        </label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-control">
+                            Profesional: <?php echo ucwords(strtolower($this->datos[0]['docNombre'] . ' ' . $this->datos[0]['docApellido'])); ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                  
+                                        <tr>
+                                            <td><input name="txtSist" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>sist.</td>
+                                            <td><input name="txtDiast" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>diast.</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input name="txtPpm" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>ppm</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input name="txtRpm" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>rpm</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input name="txtGrados" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>ºgrados</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input id="altura" name="txtCms" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>cms</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input id="peso" name="txtKgrs" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>kgrs</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table>
+                                        <tr>
+                                            <td><input disabled id="imc" style="width: 70px;" type="number" class="form-control"></td>
+                                            <td>kg/m^2</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>
+                    Exploracion(Revision paciente)
+                </label>
+                <textarea name="txtExploracion" class="form-control" placeholder="Ingrese exploracion paciente"></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    Diagnostico
+                </label>
+                <textarea name="txtDiagnostico" class="form-control" placeholder="Ingrese diagnostico paciente"></textarea>
+            </div>
+            <div class="form-group">
+                <label>
+                    Tratamiento
+                </label>
+                <textarea name="txtTratamiento" class="form-control" placeholder="Ingrese tratamiento paciente"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-danger btn-block" href="<?php echo RUTA_URL . 'medicos/citasasignadas'; ?>">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(document).on('keyup', '#peso', function () {
+            var peso = Number($(this).val());
+            var altura = Number($('#altura').val());
+            altura = altura / 100;
+            var imc = peso / (altura * altura);
+            $('#imc').val(Math.round(imc * 100) / 100);
+        });
+    });
+    function mostrarhora() {
+        var hora = new Date();
+        var horaA = hora.getHours() + ":" + hora.getMinutes() + ":" + hora.getSeconds();
+        $('#exampleInputHoraA').text('Fecha: <?php echo date('Y-m-d'); ?>' + ' : ' + horaA);
+    }
+    setInterval("mostrarhora()", 1000);
+</script>
