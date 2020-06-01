@@ -1,0 +1,7 @@
+<label for="exampleInputEmail1">Seleccione Medico</label>
+<select name="txtMedico" class="form-control">
+    <option disabled selected>--Seleccione--</option>
+    <?php for ($i = 0; $i < count($this->doctores); $i++) { ?>
+        <option value="<?php echo $this->doctores[$i]['docId']; ?>"><?php echo ucwords(strtolower($this->doctores[$i]['docNombre'] . " " . $this->doctores[$i]['docApellido'])); ?></option>
+    <?php } ?>
+</select>
