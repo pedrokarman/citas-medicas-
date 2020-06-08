@@ -1,0 +1,55 @@
+<div id="vista">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Especialidades</div>
+        <div class="card-body">
+            <button class="btn btn-success" style="margin-bottom: 9px;" id="btnAgregarEspe">Agregar</button>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Especialidad</th>
+                            <th>Descripcion</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Especialidad</th>
+                            <th>Descripcion</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php for ($i = 0; $i < count($this->espe); $i++) { ?>
+                            <tr>
+                                <td><?php echo $this->espe[$i]['espNombre']; ?></td>
+                                <td><?php echo $this->espe[$i]['espDescripcion']; ?></td>
+                                <td class="text-center">
+                                    <button value="<?php echo $this->espe[$i]['espId']; ?>" class="btn btn-warning" id="btnEditarEspe"><i class="fa fa-pencil-square-o"></i></button>
+                                    <button class="btn btn-danger" data-target="#modalEliminarEspe" data-toggle="modal" data-id="<?php echo $this->espe[$i]['espId']; ?>" data-nom="<?php echo $this->espe[$i]['espNombre']; ?>"><i class="fa fa-times"></i></button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="modalEliminarEspe" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">Mensaje de confirmacion<button class="close" data-dismiss="modal">&times;</button></div>
+            <div class="modal-body">
+                <h4>¿Esta seguro que desea eliminar esta especialidad?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-warning" id="enviar">Si</a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal">No</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
