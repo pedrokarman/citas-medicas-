@@ -1,0 +1,65 @@
+<div class="card card-register mx-auto mt-5">
+    <div class="card-header">Formulario registro</div>
+    <div class="card-body">
+        <form id="form1" method="post" action="<?php echo RUTA_URL . 'inicio/setregistro'; ?>">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Nombre</label>
+                        <input name="txtNombre" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputLastName">Apellido</label>
+                        <input name="txtApellido" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Ingrese apellido">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Documento</label>
+                        <input name="txtDocumento" class="form-control" id="exampleInputDocu" type="text" aria-describedby="AdressHelp" placeholder="Ingrese documento">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Telefono</label>
+                        <input name="txtTelefono" class="form-control" id="exampleInputTelefono" type="number" aria-describedby="AdressHelp" placeholder="Ingrese telefono">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="contraseña">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleConfirmPassword">Confirme contraseña</label>
+                        <input name="confirmPassword" class="form-control" id="exampleInputPassword2" type="password" placeholder="confirme contraseña">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputPassword1">Correo electronico</label>
+                        <input name="txtCorreo" class="form-control" id="exampleInputEmail" type="email" placeholder="ingrese correo">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleConfirmPassword">Fecha de nacimiento</label>
+                        <input name="txtFecha" class="form-control" id="exampleInputFecha" type="date">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-danger btn-block" href="<?php echo RUTA_URL . 'inicio/index'; ?>">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
