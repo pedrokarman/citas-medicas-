@@ -1,0 +1,33 @@
+<div class="card card-register mx-auto mt-5">
+    <div class="card-header"><?php echo $this->accion; ?></div>
+    <div class="card-body">
+        <form method="post" action="<?php echo RUTA_URL . 'administracion/setsedes'; ?>">
+            <input type="hidden" name="txtCodigo" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['sedeId'];} ?>">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Sede</label>
+                        <input name="txtNombre" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['sedeNombre']; }?>" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese nombre">
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Direccion</label>
+                <input name="txtDireccion" class="form-control" value="<?php if(empty($this->datos)){}else{  echo $this->datos[0]['sedeDireccion'];} ?>" id="exampleInputEmail1" type="text" aria-describedby="AdressHelp" placeholder="Ingrese direccion">
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-danger btn-block" href="<?php echo RUTA_URL . 'administracion/sedes'; ?>">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
