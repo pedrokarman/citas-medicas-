@@ -1,0 +1,74 @@
+<script type="text/javascript" src="<?php echo COMMON; ?>timepicker/jquery.timepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo COMMON; ?>timepicker/jquery.timepicker.css" />
+<script type="text/javascript" src="<?php echo COMMON; ?>timepicker/lib/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo COMMON; ?>timepicker/lib/bootstrap-datepicker.css" />
+<script type="text/javascript" src="<?php echo COMMON; ?>timepicker/lib/site.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo COMMON; ?>timepicker/lib/site.css" />
+<div class="text-center" id="lblMensaje"></div>
+<form id="formProgramar" method="post">
+    <input type="hidden" name="txtCodigo" id="codCita" value="<?php echo $this->codigo; ?>">
+    <input type="hidden" name="txtCodigoProgramacion" value="<?php echo $this->datos[0]['pdoId']; ?>">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Seleccione Especialidad</label>
+        <select id="selEspecialidad" class="form-control">
+            <option disabled selected>--Seleccione--</option>
+            <?php for ($i = 0; $i < count($this->especialidad); $i++) { ?>
+                <?php if ($this->datos[0]['espId'] == $this->especialidad[$i]['espId']) { ?>
+                    <option selected value="<?php echo $this->especialidad[$i]['espId']; ?>"><?php echo $this->especialidad[$i]['espNombre']; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $this->especialidad[$i]['espId']; ?>"><?php echo $this->especialidad[$i]['espNombre']; ?></option>
+                <?php } ?>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group" id="CargarMedico">
+        <label for="exampleInputEmail1">Seleccione Medico</label>
+        <select class="form-control">
+            <option disabled selected>--Seleccione--</option>
+            <?php for ($i = 0; $i < count($this->doctor); $i++) { ?>
+                <option selected value="<?php echo $this->doctor[$i]['docId']; ?>"><?php echo ucwords(strtolower($this->doctor[$i]['docNombre'] . " " . $this->doctor[$i]['docApellido'])); ?></option>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Seleccione Sede</label>
+        <select name="txtSede" class="form-control">
+            <option disabled selected>--Seleccione--</option>
+            <?php for ($i = 0; $i < count($this->sedes); $i++) { ?>
+                <?php if ($this->datos[0]['pdoSede'] == $this->sedes[$i]['sedeId']) { ?>
+                    <option selected value="<?php echo $this->sedes[$i]['sedeId']; ?>"><?php echo $this->sedes[$i]['sedeNombre']; ?></option>
+                <?php } else { ?>
+                    <option value="<?php echo $this->sedes[$i]['sedeId']; ?>"><?php echo $this->sedes[$i]['sedeNombre']; ?></option>
+                <?php } ?>
+            <?php } ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Fecha Cita</label>
+        <div class="input-group input-append date" id="datePicker">
+            <input type="text" value="<?php echo $this->datos[0]['pdoFecha']; ?>" class="form-control datepicker2" name="txtFecha" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Hora Cita</label>
+        <div class="input-group input-append date" id="datePicker">
+            <input type="text" id="basicExample" value="<?php echo $this->datos[0]['pdoHora']; ?>" class="form-control" name="txtHora" />
+        </div>
+    </div>
+</form>
+<?php if($this->datos[0]['ctasEstado'] == 'Programada'){ ?>
+<script>
+    $(function () {
+       $('#btnCancelarCita').attr('class','btn btn-default'); 
+    });
+</script>
+<?php } ?>
+<script>
+    $(function () {
+         $('.datepicker2').datepicker({
+           uiLibrary: 'bootstrap4',
+           format: 'yyyy/mm/dd'
+         });
+         $('#basicExample').timepicker();
+    });
+</script>
