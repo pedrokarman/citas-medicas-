@@ -1,0 +1,83 @@
+<div id="vista">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i> Medicos</div>
+        <div class="card-body">
+            <button class="btn btn-success" style="margin-bottom: 9px;" id="btnAgregarMedicos">Agregar</button>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Especialidad</th>
+                            <th>Cerificados</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Especialidad</th>
+                            <th>Cerificados</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <?php for ($i = 0; $i < count($this->medicos); $i++) { ?>
+                            <tr>
+                                <td><?php echo ucwords(strtolower($this->medicos[$i]['docNombre'])); ?></td>
+                                <td><?php echo ucwords(strtolower($this->medicos[$i]['docApellido'])); ?></td>
+                                <td><?php echo $this->medicos[$i]['docDireccion']; ?></td>
+                                <td><?php echo $this->medicos[$i]['docTelefono']; ?></td>
+                                <td><?php echo $this->medicos[$i]['espNombre']; ?></td>
+                                <td class="text-center">
+                                    <button value="<?php echo $this->medicos[$i]['docId']; ?>" id="btnVerCertificados" class="btn btn-primary"><i class="fa fa-file-word-o"></i></button>
+                                </td>
+                                <td class="text-center">
+                                    <button value="<?php echo $this->medicos[$i]['docId']; ?>" class="btn btn-warning" id="btnEditarMedicos"><i class="fa fa-pencil-square-o"></i></button>
+                                    <button class="btn btn-danger" data-target="#modalEliminarMedicos" data-toggle="modal" data-id="<?php echo $this->medicos[$i]['docId']; ?>" data-nom="<?php echo ucwords(strtolower($this->medicos[$i]['docNombre'] . " " . $this->medicos[$i]['docApellido'])); ?>"><i class="fa fa-times"></i></button>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" id="modalEliminarMedicos" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">Mensaje de confirmacion<button class="close" data-dismiss="modal">&times;</button></div>
+            <div class="modal-body">
+                <h4>¿Esta seguro que desea eliminar este medico?</h4>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-warning" id="enviar">Si</a>
+                <a href="#" class="btn btn-danger" data-dismiss="modal">No</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal modal fade" id="ModalCertificados" tabindex="-1" role="dialog">        
+    <div class="modal-dialog" role="document">            
+        <div class="modal-content">                
+            <div class="modal-header">                    
+                <h5 class="modal-title" id="exampleModalLabel">Certificados medico</h5>   
+                <button class="close" type="button" id="btnCerrarModal" data-dismiss="modal" aria-label="Close">   
+                    <span aria-hidden="true">×</span> 
+                </button>                
+            </div>                
+            <div class="modal-body" id="contenidoModalCerti"></div>  
+            <div class="modal-footer">                    
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Cerrar</button> 
+            </div>            
+        </div>        
+    </div>    
+</div>   
