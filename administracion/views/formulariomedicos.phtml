@@ -1,0 +1,82 @@
+<script src='<?php echo COMMON; ?>js/validar.js'></script>
+<div class="card card-register mx-auto mt-5">
+    <div class="card-header"><?php echo $this->accion; ?></div>
+    <div class="card-body">
+        <form id="form1" method="post" enctype="multipart/form-data" action="<?php echo RUTA_URL . 'administracion/setmedico'; ?>">
+            <input type="hidden" name="txtCodigo" value="<?php if(empty($this->datos)){}else{  echo $this->datos[0]['docId'];} ?>">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Nombre</label>
+                        <input name="txtNombre" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['docNombre']; } ?>" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputLastName">Apellido</label>
+                        <input name="txtApellido" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['docApellido'];} ?>" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Ingrese apellido">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Direccion</label>
+                        <input name="txtDireccion" class="form-control" value="<?php if(empty($this->datos)){}else{  echo $this->datos[0]['docDireccion'];} ?>" id="exampleInputEmail1" type="text" aria-describedby="AdressHelp" placeholder="Ingrese direccion">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input type="text" class="form-control" value=" <?php if(empty($this->datos)){}else{  echo $this->datos[0]['docUsuario'];} ?>" placeholder="Ingrese usuario" aria-describedby="AdressHelp" name="txtUsuario">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="contraseña">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleConfirmPassword">Confirme contraseña</label>
+                        <input name="confirmPassword" class="form-control" id="exampleInputPassword2" type="password" placeholder="confirme contraseña">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputPassword1">Telefono</label>
+                        <input name="txtTelefono" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['docTelefono']; } ?>" id="exampleInputPassword1" type="number" placeholder="Telefono">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleConfirmPassword">Especialidad</label>
+                        <select name="txtEspecialidad" class="form-control">
+                            <option disabled selected>--Seleccione--</option>
+                            <?php for ($i = 0; $i < count($this->especialidad); $i++) { ?>
+                                <?php if ($this->especialidad[$i]['espId'] == $this->datos[0]['docEspecialidad']) { ?>
+                                    <option value="<?php echo $this->especialidad[$i]['espId']; ?>" selected><?php echo $this->especialidad[$i]['espNombre']; ?></option>
+                                <?php } else { ?>
+                                    <option value="<?php echo $this->especialidad[$i]['espId']; ?>"><?php echo $this->especialidad[$i]['espNombre']; ?></option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center"style="margin-bottom: 15px;">
+                <button type="button" class="btn btn-primary" id="btnArchivos">Subir certificados</button>
+            </div>
+            <div class="form-group">
+                <div id="vistaArchivos"></div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-danger btn-block" href="<?php echo RUTA_URL . 'administracion/medicos'; ?>">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
