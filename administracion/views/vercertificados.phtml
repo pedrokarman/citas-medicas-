@@ -1,0 +1,17 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Certificados</div>
+    <div class="card-body">
+        <?php if (count($this->datos) > 0) { ?>
+            <?php for ($i = 0; $i < count($this->datos); $i++): ?>
+                <div class="text-center">
+                    <a target="_blank" href="<?php echo RUTA_URL . 'public/citasLayout/files/' . $this->datos[$i]['cerNombre']; ?>"><?php echo $this->datos[$i]['cerNombre']; ?></a>
+                </div>
+                <hr/>
+            <?php endfor; ?>
+        <?php }else { ?>
+            <label>!No se han encontrado documentos asociados a este usuario</label>
+        <?php } ?>
+    </div>
+</div>
+
