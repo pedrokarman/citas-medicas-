@@ -1,0 +1,101 @@
+<?php
+$roles = array(
+ array(
+     'rol'=>'Administrador General',
+     'tipo'=>'General'
+ ), 
+ array(
+     'rol'=>'Administrador Citas',
+     'tipo'=>'Citas'
+ ), 
+);
+$estado = array(
+  array(
+    'estado'=>'Activo',
+    'tipo'=>'A'
+  ),
+  array(
+    'estado'=>'Inactivo',
+    'tipo'=>'I'
+  ),
+);
+?>
+<script src='<?php echo COMMON; ?>js/validar.js'></script>
+<div class="card card-register mx-auto mt-5">
+    <div class="card-header"><?php echo $this->accion; ?></div>
+    <div class="card-body">
+        <form id="form1" method="post" action="<?php echo RUTA_URL . 'administracion/setroles'; ?>">
+            <input type="hidden" name="txtCodigo" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['rlesId'];} ?>">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Nombre</label>
+                        <input name="txtNombre" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['rlesNombreRol'];} ?>" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese nombre">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Usuario</label>
+                        <input name="txtUsuario" class="form-control" value="<?php if(empty($this->datos)){}else{ echo $this->datos[0]['rlesUsuario'];} ?>" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Ingrese usuario">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Contraseña</label>
+                        <input name="password" class="form-control" value="" id="exampleInputName" type="password" aria-describedby="nameHelp" placeholder="Ingrese contraseña">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Confirme contraseña</label>
+                        <input name="confirmPassword" class="form-control" value="" id="exampleInputName" type="password" aria-describedby="nameHelp" placeholder="Confirme contraseña">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">Seleccione Rol</label>
+                        <select class="form-control" name="txtRol">
+                            <option disabled selected>--Seleccione--</option>
+                            <?php for($i=0; $i<count($roles); $i++){ ?>
+                            <?php if($this->datos[0]['rlesTipo']==$roles[$i]['tipo']){ ?>
+                            <option selected value="<?php echo $roles[$i]['tipo']; ?>"><?php echo $roles[$i]['rol']; ?></option>
+                            <?php }else{ ?>
+                            <option value="<?php echo $roles[$i]['tipo']; ?>"><?php echo $roles[$i]['rol']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <?php if($this->select){ ?>
+                        <label for="exampleInputName">Estado Usuario</label>
+                        <select class="form-control" name="txtEstado">
+                            <option disabled selected>--Seleccione--</option>
+                            <?php for($i=0; $i<count($estado); $i++){ ?>
+                            <?php if($this->datos[0]['rlesEstado']==$estado[$i]['tipo']){ ?>
+                            <option selected value="<?php echo $estado[$i]['tipo']; ?>"><?php echo $estado[$i]['estado']; ?></option>
+                            <?php }else{ ?>
+                            <option value="<?php echo $estado[$i]['tipo']; ?>"><?php echo $estado[$i]['estado']; ?></option>
+                            <?php } ?>
+                            <?php } ?>
+                        </select>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-success btn-block" value="Guardar">
+                    </div>
+                    <div class="col-md-6">
+                        <a class="btn btn-danger btn-block" href="<?php echo RUTA_URL . 'administracion/appusuarios'; ?>">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
