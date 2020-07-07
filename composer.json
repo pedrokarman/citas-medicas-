@@ -1,0 +1,7 @@
+{
+    "name": "citas",
+    "description": "web project",
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    }
+}
