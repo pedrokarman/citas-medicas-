@@ -3,15 +3,15 @@ php:
  - 7.3.12
 
 
-before_script:
-  - composer install 
+# before_script:
+#   - composer install 
 
-script: phpunit -- configuration phpunit.xml
+# script: phpunit
 
-matrix:
-  allow_failures:
-    - 7.3.12
-  fast_finish: true
+# matrix:
+#   allow_failures:
+#     - 7.3.12
+#   fast_finish: true
 
 
 # notifications:
