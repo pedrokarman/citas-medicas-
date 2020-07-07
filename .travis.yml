@@ -6,7 +6,7 @@ php:
 before_script:
   - composer install 
 
-script: phpunit
+script: phpunit -- configuration phpunit.xml --coverage-text
 
 # matrix:
 #   allow_failures:
