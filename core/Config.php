@@ -1,11 +1,11 @@
 <?php
 
-define('RUTA_URL', 'http://localhost/proyectocitas/');
+define('RUTA_URL', 'http://localhost/citas-medicas-/');
 define('COMMON', RUTA_URL . 'public/common/');
 define('BASE_URL_LIB', ROOT . 'core/library' . DS);
 define('DEFAULT_CONTROLLER', 'inicio');
 define('DEFAULT_METHOD', 'index');
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'localhost:3308');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'citasapp');
