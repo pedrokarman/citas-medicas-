@@ -1,5 +1,5 @@
 {
-    "name": "citas",
+    "name": "citas/citas",
     "description": "web project",
     "require-dev": {
         "phpunit/phpunit": "^7"
