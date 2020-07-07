@@ -20,7 +20,6 @@ matrix:
 notifications:
     on_success: never
     on_failure: always
-    email: carlosf0505@gmail.com
 
 
 
