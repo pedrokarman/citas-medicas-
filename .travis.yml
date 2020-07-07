@@ -1,22 +1,19 @@
 language: php
-# php:
-#  - 7.0
-#  - 7.3.12
-#  - hhvm-nightly
-
-# before_script:
-#   - composer self-update
-#   - composer install --prefer-source --no-interaction --dev
+php:
+ - 7.3.12
 
 
-#  script: phpunit
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
 
-# matrix:
-#   allow_failures:
-#    - 7.0
-#     - 7.3.12
-#  - hhvm-nightly
-#   fast_finish: true
+
+ script: phpunit
+
+matrix:
+  allow_failures:
+    - 7.3.12
+  fast_finish: true
 
 
 # notifications:
