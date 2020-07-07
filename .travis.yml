@@ -4,24 +4,24 @@ php:
  - 7.3.12
  - hhvm-nightly
 
-before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
+# before_script:
+#   - composer self-update
+#   - composer install --prefer-source --no-interaction --dev
 
 
- script: phpunit
+#  script: phpunit
 
-matrix:
-  allow_failures:
-   - 7.0
-    - 7.3.12
- - hhvm-nightly
-  fast_finish: true
+# matrix:
+#   allow_failures:
+#    - 7.0
+#     - 7.3.12
+#  - hhvm-nightly
+#   fast_finish: true
 
 
-notifications:
-    on_success: never
-    on_failure: always
+# notifications:
+#     on_success: never
+#     on_failure: always
 
 
 
