@@ -10,10 +10,10 @@ before_script:
 
  script: phpunit
 
-matrix:
-  allow_failures:
-    - 7.3.12
-  fast_finish: true
+# matrix:
+#   allow_failures:
+#     - 7.3.12
+#   fast_finish: true
 
 
 # notifications:
