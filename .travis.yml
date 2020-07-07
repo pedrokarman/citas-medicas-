@@ -6,7 +6,7 @@ php:
 before_script:
   - composer install 
 
-#  script: phpunit
+script: phpunit
 
 # matrix:
 #   allow_failures:
