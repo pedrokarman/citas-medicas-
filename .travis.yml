@@ -2,14 +2,12 @@ language: php
 php:
  - 7.3.12
 
- before_install:
- - php /home/travis/build/pedrokarman/citas-medicas-/.vendor/autoload.php
 
 
 before_script:
   - composer install 
 
-# script: phpunit
+script: phpunit /home/travis/build/pedrokarman/citas-medicas-/.vendor/autoload.php
 
 matrix:
   allow_failures:
